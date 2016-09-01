@@ -1,0 +1,1 @@
+-f -s; python3 /usr/share/java-utils/mvn_alias.py :wagon-http :::shaded:

@@ -1,0 +1,22 @@
+# This file makes the installation fails
+rm src/site/site.xml
+
+python3 /usr/share/java-utils/pom_editor.py pom_remove_plugin  :animal-sniffer-maven-plugin
+python3 /usr/share/java-utils/pom_editor.py pom_remove_dep :wagon-tck-http wagon-providers/wagon-http
+
+# correct groupId for jetty
+python3 /usr/share/java-utils/pom_editor.py pom_xpath_set      "pom:groupId[text()='org.mortbay.jetty']" "org.eclipse.jetty"
+
+# disable tests, missing dependencies
+python3 /usr/share/java-utils/pom_editor.py pom_disable_module wagon-tcks
+python3 /usr/share/java-utils/pom_editor.py pom_disable_module wagon-ssh-common-test wagon-providers/pom.xml
+
+python3 /usr/share/java-utils/pom_editor.py pom_disable_module wagon-provider-test
+python3 /usr/share/java-utils/pom_editor.py pom_remove_dep :wagon-provider-test
+python3 /usr/share/java-utils/pom_editor.py pom_remove_dep :wagon-provider-test wagon-providers
+
+# missing dependencies
+python3 /usr/share/java-utils/pom_editor.py pom_disable_module wagon-webdav-jackrabbit wagon-providers
+
+python3 /usr/share/java-utils/mvn_file.py ":wagon-{*}" maven-wagon/@1
+python3 /usr/share/java-utils/mvn_package.py ":wagon"
