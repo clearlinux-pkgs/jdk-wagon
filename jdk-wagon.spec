@@ -4,7 +4,7 @@
 #
 Name     : jdk-wagon
 Version  : 2.10
-Release  : 1
+Release  : 2
 URL      : http://repo1.maven.org/maven2/org/apache/maven/wagon/wagon/2.10/wagon-2.10-source-release.zip
 Source0  : http://repo1.maven.org/maven2/org/apache/maven/wagon/wagon/2.10/wagon-2.10-source-release.zip
 Summary  : No detailed summary available
